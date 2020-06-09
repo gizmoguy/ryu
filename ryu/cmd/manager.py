@@ -20,7 +20,7 @@ import os
 import sys
 
 from ryu.lib import hub
-hub.patch(thread=False)
+hub.patch(thread=False, socket=False)
 
 from ryu import cfg
 

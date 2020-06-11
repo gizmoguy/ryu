@@ -136,12 +136,15 @@ if HUB_TYPE == 'eventlet':
                         ctx.verify_mode = ssl_args.pop('cert_reqs')
                     if 'ca_certs' in ssl_args:
                         ctx.load_verify_locations(ssl_args.pop('ca_certs'))
+
                     def wrap_and_handle_ctx(sock, addr):
                         handle(ctx.wrap_socket(sock, **ssl_args), addr)
+
                     self.handle = wrap_and_handle_ctx
                 else:
                     def wrap_and_handle_ssl(sock, addr):
                         handle(ssl.wrap_socket(sock, **ssl_args), addr)
+
                     self.handle = wrap_and_handle_ssl
             else:
                 self.handle = handle

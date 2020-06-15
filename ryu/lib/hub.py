@@ -251,7 +251,7 @@ elif HUB_TYPE == 'gevent':
     import sys
 
     getcurrent = gevent.getcurrent
-    patch = gevent.monkey_patch
+    patch = gevent.monkey
     sleep = gevent.sleep
     listen = gevent.listen
     connect = gevent.connect

@@ -38,7 +38,7 @@ from ryu.lib import hub
 from ryu.ofproto import ofproto_v1_3_parser
 from ryu.ofproto import ofproto_v1_2_parser
 from ryu.ofproto import ofproto_v1_0_parser
-hub.patch()
+hub.patch_all()
 
 
 LOG = logging.getLogger('test_controller')

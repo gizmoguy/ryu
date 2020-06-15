@@ -20,7 +20,7 @@ import os
 import sys
 
 from ryu.lib import hub
-hub.patch(thread=False)
+hub.patch_all(thread=False)
 
 from ryu import cfg
 
@@ -83,7 +83,7 @@ def main(args=None, prog=None):
         msg = 'debugging is available (--enable-debugger option is turned on)'
         logger.info(msg)
     else:
-        hub.patch(thread=True)
+        hub.patch_all(thread=True)
 
     if CONF.pid_file:
         with open(CONF.pid_file, 'w') as pid_file:

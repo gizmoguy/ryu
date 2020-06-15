@@ -19,7 +19,7 @@ import unittest
 from nose.tools import raises
 
 from ryu.lib import hub
-hub.patch()
+hub.patch_all()
 
 
 class MyException(BaseException):

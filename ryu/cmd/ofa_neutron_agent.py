@@ -23,7 +23,7 @@
 # TODO: Remove this module when IceHouse is EOL'ed.
 
 from ryu.lib import hub
-hub.patch()
+hub.patch_all()
 
 from ryu import cfg
 

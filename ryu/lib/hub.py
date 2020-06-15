@@ -241,7 +241,7 @@ elif HUB_TYPE == 'gevent':
     import gevent
     import gevent.event
     import gevent.queue
-    import gevent.semaphore
+    import gevent.lock
     import gevent.timeout
     import gevent.wsgi
     from gevent import websocket
@@ -313,8 +313,8 @@ elif HUB_TYPE == 'gevent':
 
     Queue = gevent.queue.LightQueue
     QueueEmpty = gevent.queue.Empty
-    Semaphore = gevent.semaphore.Semaphore
-    BoundedSemaphore = gevent.semaphore.BoundedSemaphore
+    Semaphore = gevent.lock.Semaphore
+    BoundedSemaphore = gevent.lock.BoundedSemaphore
     TaskExit = greenlet.GreenletExit
 
     class StreamServer(object):

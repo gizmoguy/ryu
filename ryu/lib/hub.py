@@ -244,7 +244,6 @@ elif HUB_TYPE == 'gevent':
     import gevent.lock
     import gevent.timeout
     import gevent.pywsgi
-    from gevent import websocket
     import greenlet
     import ssl
     import socket
@@ -403,7 +402,7 @@ elif HUB_TYPE == 'gevent':
             self.logger = LoggingWrapper()
             gevent.pywsgi.server(self.server, self.handle, self.logger)
 
-    WebSocketWSGI = websocket.WebSocketWSGI
+    WebSocketWSGI = gevent.pywsgi.WSGIServer
 
     Timeout = gevent.timeout.Timeout
 

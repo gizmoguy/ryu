@@ -21,7 +21,7 @@ import socket
 import struct
 import traceback
 from socket import IPPROTO_TCP, TCP_NODELAY
-from eventlet import semaphore
+from gevent import semaphore
 
 from ryu.lib.packet import bgp
 from ryu.lib.packet.bgp import AS_TRANS

@@ -391,8 +391,8 @@ class Activity(object):
             name = self.name + '_server@' + str(sa[0])
             self._asso_socket_map[name] = listen_sockets[sa]
             if count == 0:
-                import eventlet
-                server = eventlet.spawn(self._listen_socket_loop,
+                import gevent
+                server = gevent.spawn(self._listen_socket_loop,
                                         listen_sockets[sa], conn_handle)
 
                 self._child_thread_map[name] = server

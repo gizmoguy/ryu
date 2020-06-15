@@ -243,7 +243,7 @@ elif HUB_TYPE == 'gevent':
     import gevent.queue
     import gevent.lock
     import gevent.timeout
-    import gevent.wsgi
+    import gevent.pywsgi
     from gevent import websocket
     import greenlet
     import ssl
@@ -401,15 +401,15 @@ elif HUB_TYPE == 'gevent':
     class WSGIServer(StreamServer):
         def serve_forever(self):
             self.logger = LoggingWrapper()
-            eventlet.wsgi.server(self.server, self.handle, self.logger)
+            gevent.pywsgi.server(self.server, self.handle, self.logger)
 
     WebSocketWSGI = websocket.WebSocketWSGI
 
-    Timeout = eventlet.timeout.Timeout
+    Timeout = gevent.timeout.Timeout
 
     class Event(object):
         def __init__(self):
-            self._ev = eventlet.event.Event()
+            self._ev = gevent.event.Event()
             self._cond = False
 
         def _wait(self, timeout=None):
@@ -421,7 +421,7 @@ elif HUB_TYPE == 'gevent':
             # Since eventlet Event doesn't allow multiple send() operations
             # on an event, re-create the underlying event.
             # Note: _ev.reset() is obsolete.
-            self._ev = eventlet.event.Event()
+            self._ev = gevent.event.Event()
 
         def is_set(self):
             return self._cond
